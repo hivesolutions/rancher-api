@@ -4,7 +4,7 @@ The Python Rancher API client.
 
 ## Reference
 
-The Rancher API projects takes most of its reference implementation from the [Official Rancher API Documentation](docs.rancher.com/rancher/api/).
+The Rancher API projects takes most of its reference implementation from the [Official Rancher API Documentation](http://docs.rancher.com/rancher/api/).
 
 ## License
 
