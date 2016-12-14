@@ -1,0 +1,28 @@
+sudo: false
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "nightly"
+  - "pypy"
+  - "pypy3"
+install:
+  - pip install "pkginfo<1.3"
+  - pip install -r requirements.txt
+  - pip install coveralls
+  - pip install twine
+script: if [[ $TRAVIS_PYTHON_VERSION != "3.2" ]]; then coverage run --source=rancher setup.py test; else python setup.py test; fi
+after_success: if [[ $TRAVIS_PYTHON_VERSION != "3.2" ]]; then coveralls; fi
+deploy:
+  provider: pypi
+  user: joamag
+  password:
+    secure: b/RpPhxebjmj7L2WHwlSrz+VPzhlRDPyP+c8Mch6QNq6xH32MwSq6UAl/zFzXn1gzEFS6ZRHQOfbrFNgrFzQWpv53F5bURm7PEQxv01IChn8IJh0iqu25R0/3vDZPxZ8j80fuRcg7ByB5asC7GBLhb3mjpSE9a69EtdXlXf1oLM=
+  distributions: sdist bdist_wheel
+  on:
+    tags: true
+    python: "2.7"
