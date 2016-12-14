@@ -57,6 +57,12 @@ class RancherApp(appier.WebApp):
         stacks = api.list_stacks()
         return stacks
 
+    @appier.route("/services", "GET")
+    def services(self):
+        api = self.get_api()
+        services = api.list_services()
+        return services
+
     def get_api(self):
         api = base.get_api()
         return api
