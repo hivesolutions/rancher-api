@@ -63,6 +63,18 @@ class RancherApp(appier.WebApp):
         services = api.list_services()
         return services
 
+    @appier.route("/services/<str:id>", "GET")
+    def _service(self, id):
+        api = self.get_api()
+        service = api.get_service(id)
+        return service
+
+    @appier.route("/services/<str:id>/restart", "GET")
+    def restart_service(self, id):
+        api = self.get_api()
+        service = api.restart_service(id)
+        return service
+
     def get_api(self):
         api = base.get_api()
         return api

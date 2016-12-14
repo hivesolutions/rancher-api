@@ -47,3 +47,23 @@ class ServiceApi(object):
         )
         data = contents["data"]
         return data
+
+    def get_service(self, id):
+        url = self.base_url + "services/%s" % id
+        contents = self.get(url)
+        data = contents["data"]
+        return data
+
+    def restart_service(self, id, batch_size = 1, interval = 2000):
+        url = self.base_url + "services/%s?action=restart" % id
+        contents = self.post(
+            url,
+            data_j = dict(
+                rollingRestartStrategy = dict(
+                    batchSize = batch_size,
+                    intervalMillis = interval
+                )
+            )
+        )
+        data = contents["data"]
+        return data
