@@ -54,6 +54,12 @@ class ServiceApi(object):
         data = contents["data"]
         return data
 
+    def update_service(self, id, payload = {}):
+        url = self.base_url + "services/%s" % id
+        contents = self.put(url, data_j = payload)
+        data = contents["data"]
+        return data
+
     def restart_service(self, id, batch_size = 1, interval = 2000):
         url = self.base_url + "services/%s?action=restart" % id
         contents = self.post(
