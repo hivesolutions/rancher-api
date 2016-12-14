@@ -81,6 +81,12 @@ class RancherApp(appier.WebApp):
         service = api.finish_upgrade_service(id)
         return service
 
+    @appier.route("/services/<str:id>/rollback", ("GET", "POST"))
+    def rollback_service(self, id):
+        api = self.get_api()
+        service = api.rollback_service(id)
+        return service
+
     @appier.route("/services/<str:id>/restart", ("GET", "POST"))
     def restart_service(self, id):
         api = self.get_api()
