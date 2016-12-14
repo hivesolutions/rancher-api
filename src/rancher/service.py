@@ -94,6 +94,12 @@ class ServiceApi(object):
         data = contents["data"]
         return data
 
+    def rollback_service(self, id):
+        url = self.base_url + "services/%s?action=rollback" % id
+        contents = self.post(url)
+        data = contents["data"]
+        return data
+
     def restart_service(self, id, batch_size = 1, interval = 2000):
         url = self.base_url + "services/%s?action=restart" % id
         contents = self.post(
