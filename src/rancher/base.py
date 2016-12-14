@@ -41,9 +41,16 @@ import base64
 
 import appier
 
+from . import stack
+from . import service
+
 BASE_URL = "http://localhost:8080/v2"
 
-class Api(appier.Api):
+class Api(
+    appier.Api,
+    stack.StackApi,
+    service.ServiceApi
+):
 
     def __init__(self, *args, **kwargs):
         appier.Api.__init__(self, *args, **kwargs)
