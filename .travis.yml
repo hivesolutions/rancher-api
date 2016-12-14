@@ -21,7 +21,7 @@ deploy:
   provider: pypi
   user: joamag
   password:
-    secure: b/RpPhxebjmj7L2WHwlSrz+VPzhlRDPyP+c8Mch6QNq6xH32MwSq6UAl/zFzXn1gzEFS6ZRHQOfbrFNgrFzQWpv53F5bURm7PEQxv01IChn8IJh0iqu25R0/3vDZPxZ8j80fuRcg7ByB5asC7GBLhb3mjpSE9a69EtdXlXf1oLM=
+    secure: kgO6/JqtmimSDtLX9bkz7++VycP/Pg9FXGLJl5nClyz3eeyRkZwPBqW1TlWIeWJCgB4G9EcDE4/NW+6Ql6pEq3ITPm4WaZ+Zfmp1Q76fFRcVIG+CON4kuKzXDyRcWFZcPZ/Aez1SgFN4mSQsIgXI1upZ7mwJ1U1ggtJQY8CjT1wLRC8u2W7fMPxGHbqnjTG9QvP1gOUIHb8Xnx9eesmBfOlBuE9ijf+QAuzJprIV38tEN6AnDdTvPzIanRY7DnNgS94kN3I1fMf1CYpN+W1HJu2/YFNd3irA8+F71j1mjMXr+2R8iN9VEINfQstEo4L2vJvBWjsEiAXvQNMxUtpj6+JEK3iT7d9gR9MNYs2Ad1Lgwg5E+JFCt6aPAwOLHVhh74MIpIYfkMiKbr0L/q0o0eUuGcQmMgSkRQLwnt8f3cxu/w2lA+9hdlQCEZ5bNKPNyVKNm7OBB9wWKgVboRdfyfqvRk6B2m7o+DON+bpqXrbPbucXJUG7jjS9Hhyhzp8x8FTQzEVJ01vINcRLcuR0N/z2QF2dv6jfE7fmh6vrUh+f+t836QUMFW+YgZYdJY8uC6EXvW/toR4c1UoaPjrS3AxIEJrhKrAJhtSFLhfpIwFGA4zRnCh52a/1WHDk8t4/5Izsxp2HrHMpn1CQkvK3keokQyPN+IuTIob4CnSnfSc=
   distributions: sdist bdist_wheel
   on:
     tags: true
