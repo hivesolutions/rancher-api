@@ -60,6 +60,40 @@ class ServiceApi(object):
         data = contents["data"]
         return data
 
+    def upgrade_service(
+        self,
+        id,
+        batch_size = 1,
+        interval = 2000,
+        image_uuid = None
+    ):
+        if image_uuid == None: image_uuid = self._service_image_uuid(id)
+        url = self.base_url + "services/%s?action=upgrade" % id
+        contents = self.post(
+            url,
+            data_j = dict(
+
+                inServiceStrategy = dict(
+                    batchSize = batch_size,
+                    intervalMillis = interval,
+                    launchConfig = dict(imageUuid = image_uuid),
+                    secondaryLaunchConfigs = []
+                ),
+                toServiceStrategy = dict(
+                    batchSize = batch_size,
+                    intervalMillis = interval
+                )
+            )
+        )
+        data = contents["data"]
+        return data
+
+    def finish_upgrade_service(self, id):
+        url = self.base_url + "services/%s?action=finishupgrade" % id
+        contents = self.post(url)
+        data = contents["data"]
+        return data
+
     def restart_service(self, id, batch_size = 1, interval = 2000):
         url = self.base_url + "services/%s?action=restart" % id
         contents = self.post(
@@ -73,3 +107,10 @@ class ServiceApi(object):
         )
         data = contents["data"]
         return data
+
+    def _service_image_uuid(self, id):
+        service = self.get_service(id)
+        fields = service.get("fields", {})
+        launch_config = fields.get("launchConfig", {})
+        image_uuid = launch_config.get("imageUuid", None)
+        return image_uuid
