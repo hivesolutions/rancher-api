@@ -2,6 +2,10 @@
 
 The Python Rancher API client.
 
+## Reference
+
+The Rancher API projects takes most of its reference implementation from the [Official Rancher API Documentation](docs.rancher.com/rancher/api/).
+
 ## License
 
 Rancher API is currently licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/).
