@@ -39,7 +39,7 @@ __license__ = "Apache License, Version 2.0"
 
 class StackApi(object):
 
-    def list_services(self, *args, **kwargs):
+    def list_stacks(self, *args, **kwargs):
         url = self.base_url + "stacks"
         contents = self.get(
             url,

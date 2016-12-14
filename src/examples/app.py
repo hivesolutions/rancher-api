@@ -49,13 +49,13 @@ class RancherApp(appier.WebApp):
 
     @appier.route("/", "GET")
     def index(self):
-        return self.me()
+        return self.stacks()
 
-    @appier.route("/me", "GET")
-    def me(self):
+    @appier.route("/stacks", "GET")
+    def stacks(self):
         api = self.get_api()
-        account = api.self_user()
-        return account
+        stacks = api.list_stacks()
+        return stacks
 
     def get_api(self):
         api = base.get_api()

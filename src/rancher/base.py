@@ -77,8 +77,8 @@ class Api(
         if auth: headers["Authorization"] = self.get_authorization()
 
     def get_authorization(self):
-        if not self.username or not self.token: None
-        payload = "%s:%s" % (self.username, self.token)
+        if not self.username or not self.password: None
+        payload = "%s:%s" % (self.username, self.password)
         payload = appier.legacy.bytes(payload)
         authorization = base64.b64encode(payload)
         authorization = appier.legacy.str(authorization)
