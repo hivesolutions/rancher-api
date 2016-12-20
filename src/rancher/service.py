@@ -64,6 +64,7 @@ class ServiceApi(object):
         id,
         batch_size = 1,
         interval = 2000,
+        full_upgrade = True,
         image_uuid = None
     ):
         if image_uuid == None: image_uuid = self._service_image_uuid(id)
@@ -79,6 +80,7 @@ class ServiceApi(object):
                     launchConfig = launch_config,
                     batchSize = batch_size,
                     intervalMillis = interval,
+                    fullUpgrade = full_upgrade,
                     launchConfig = dict(imageUuid = image_uuid),
                     secondaryLaunchConfigs = []
                 ),
