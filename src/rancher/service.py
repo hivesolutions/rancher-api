@@ -51,8 +51,7 @@ class ServiceApi(object):
     def get_service(self, id):
         url = self.base_url + "services/%s" % id
         contents = self.get(url)
-        data = contents["data"]
-        return data
+        return contents
 
     def update_service(self, id, payload = {}):
         url = self.base_url + "services/%s" % id

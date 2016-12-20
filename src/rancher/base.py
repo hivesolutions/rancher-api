@@ -44,7 +44,7 @@ import appier
 from . import stack
 from . import service
 
-BASE_URL = "http://localhost:8080/v2"
+BASE_URL = "http://localhost:8080/v2/"
 
 class Api(
     appier.Api,
