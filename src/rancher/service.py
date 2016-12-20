@@ -68,10 +68,15 @@ class ServiceApi(object):
     ):
         if image_uuid == None: image_uuid = self._service_image_uuid(id)
         url = self.base_url + "services/%s?action=upgrade" % id
+        service = self.get_service(id)
+        data = service["data"]
+        fields = data["fields"]
+        launchConfig = fields["launchConfig"]
         contents = self.post(
             url,
             data_j = dict(
                 inServiceStrategy = dict(
+                    launchConfig = launchConfig,
                     batchSize = batch_size,
                     intervalMillis = interval,
                     launchConfig = dict(imageUuid = image_uuid),
