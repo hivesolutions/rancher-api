@@ -71,12 +71,12 @@ class ServiceApi(object):
         service = self.get_service(id)
         data = service["data"]
         fields = data["fields"]
-        launchConfig = fields["launchConfig"]
+        launch_config = fields["launchConfig"]
         contents = self.post(
             url,
             data_j = dict(
                 inServiceStrategy = dict(
-                    launchConfig = launchConfig,
+                    launchConfig = launch_config,
                     batchSize = batch_size,
                     intervalMillis = interval,
                     launchConfig = dict(imageUuid = image_uuid),
