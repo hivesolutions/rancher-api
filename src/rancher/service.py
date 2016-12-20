@@ -65,28 +65,19 @@ class ServiceApi(object):
         batch_size = 1,
         interval = 2000,
         full_upgrade = True,
-        image_uuid = None
+        launch_config = None
     ):
-        if image_uuid == None: image_uuid = self._service_image_uuid(id)
         url = self.base_url + "services/%s?action=upgrade" % id
-        service = self.get_service(id)
-        data = service["data"]
-        fields = data["fields"]
-        launch_config = fields["launchConfig"]
+        if launch_config == None: launch_config = self._service_launch_config(id)
         contents = self.post(
             url,
             data_j = dict(
                 inServiceStrategy = dict(
-                    launchConfig = launch_config,
                     batchSize = batch_size,
                     intervalMillis = interval,
                     fullUpgrade = full_upgrade,
-                    launchConfig = dict(imageUuid = image_uuid),
+                    launchConfig = launch_config,
                     secondaryLaunchConfigs = []
-                ),
-                toServiceStrategy = dict(
-                    batchSize = batch_size,
-                    intervalMillis = interval
                 )
             )
         )
@@ -119,9 +110,14 @@ class ServiceApi(object):
         data = contents["data"]
         return data
 
-    def _service_image_uuid(self, id):
+    def _service_launch_config(self, id):
         service = self.get_service(id)
-        fields = service.get("fields", {})
+        data = service.get("data", {})
+        fields = data.get("fields", {})
         launch_config = fields.get("launchConfig", {})
+        return launch_config
+
+    def _service_image_uuid(self, id):
+        launch_config = self._service_launch_config(id)
         image_uuid = launch_config.get("imageUuid", None)
         return image_uuid
