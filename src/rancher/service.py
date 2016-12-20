@@ -67,11 +67,11 @@ class ServiceApi(object):
         batch_size = 1,
         interval = 2000,
         full_upgrade = True,
-        try_upgrade = True,
+        try_finish = True,
         launch_config = None
     ):
         url = self.base_url + "services/%s?action=upgrade" % id
-        if try_upgrade: self._service_try_finish(id)
+        if try_finish: self._service_try_finish(id)
         if launch_config == None: launch_config = self._service_launch_config(id)
         contents = self.post(
             url,
