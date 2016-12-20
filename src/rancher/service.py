@@ -71,7 +71,6 @@ class ServiceApi(object):
         contents = self.post(
             url,
             data_j = dict(
-
                 inServiceStrategy = dict(
                     batchSize = batch_size,
                     intervalMillis = interval,
