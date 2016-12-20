@@ -37,6 +37,8 @@ __copyright__ = "Copyright (c) 2008-2016 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
+import time
+
 class ServiceApi(object):
 
     def list_services(self, *args, **kwargs):
@@ -65,10 +67,12 @@ class ServiceApi(object):
         batch_size = 1,
         interval = 2000,
         full_upgrade = True,
+        try_upgrade = True,
         launch_config = None
     ):
         url = self.base_url + "services/%s?action=upgrade" % id
         if launch_config == None: launch_config = self._service_launch_config(id)
+        if try_upgrade: self._service_try_finish(id)
         contents = self.post(
             url,
             data_j = dict(
@@ -109,6 +113,11 @@ class ServiceApi(object):
         )
         data = contents["data"]
         return data
+
+    def _service_try_finish(self, id, timeout = 5.0):
+        try: self.finish_upgrade_service(id)
+        except: pass
+        else: time.sleep(timeout)
 
     def _service_launch_config(self, id):
         service = self.get_service(id)
