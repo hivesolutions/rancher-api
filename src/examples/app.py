@@ -100,3 +100,5 @@ class RancherApp(appier.WebApp):
 if __name__ == "__main__":
     app = RancherApp()
     app.serve()
+else:
+    __path__ = []
