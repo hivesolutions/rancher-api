@@ -61,6 +61,11 @@ class ServiceApi(object):
         contents = self.get(url)
         return contents
 
+    def get_service_safe(self, id):
+        contents = self.list_services_name(id)
+        if contents: return contents[0]
+        return self.get_service(id)
+
     def update_service(self, id, payload = {}):
         url = self.base_url + "services/%s" % id
         contents = self.put(url, data_j = payload)

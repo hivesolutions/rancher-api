@@ -75,6 +75,12 @@ class RancherApp(appier.WebApp):
         service = api.get_service(id)
         return service
 
+    @appier.route("/services/<str:id>/safe", "GET")
+    def service_safe(self, id):
+        api = self.get_api()
+        service = api.get_service_safe(id)
+        return service
+
     @appier.route("/services/<str:id>/upgrade", ("GET", "POST"))
     def upgrade_service(self, id):
         api = self.get_api()
