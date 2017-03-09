@@ -50,6 +50,12 @@ class ServiceApi(object):
         data = contents["data"]
         return data
 
+    def list_services_name(self, name):
+        url = self.base_url + "services?name=%s" % name
+        contents = self.get(url)
+        data = contents["data"]
+        return data
+
     def get_service(self, id):
         url = self.base_url + "services/%s" % id
         contents = self.get(url)
