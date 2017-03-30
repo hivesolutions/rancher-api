@@ -79,11 +79,13 @@ class ServiceApi(object):
         interval = 2000,
         full_upgrade = True,
         try_finish = True,
+        safe = True,
         launch_config = None
     ):
         url = self.base_url + "services/%s?action=upgrade" % id
         if try_finish: self._service_try_finish(id)
         if launch_config == None: launch_config = self._service_launch_config(id)
+        if safe and not self._serivce_active(id): return
         contents = self.post(
             url,
             data_j = dict(
@@ -124,6 +126,10 @@ class ServiceApi(object):
         )
         data = contents["data"]
         return data
+
+    def _serivce_active(self):
+        service = self.get_service(id)
+        return service["state"] == "active"
 
     def _service_try_finish(self, id, timeout = 10.0):
         try: self.finish_upgrade_service(id)
