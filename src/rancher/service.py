@@ -125,7 +125,7 @@ class ServiceApi(object):
         data = contents["data"]
         return data
 
-    def _service_try_finish(self, id, timeout = 5.0):
+    def _service_try_finish(self, id, timeout = 10.0):
         try: self.finish_upgrade_service(id)
         except: pass
         else: time.sleep(timeout)
