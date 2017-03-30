@@ -39,6 +39,8 @@ __license__ = "Apache License, Version 2.0"
 
 import time
 
+import appier
+
 class ServiceApi(object):
 
     def list_services(self, *args, **kwargs):
@@ -85,7 +87,10 @@ class ServiceApi(object):
         url = self.base_url + "services/%s?action=upgrade" % id
         if try_finish: self._service_try_finish(id)
         if launch_config == None: launch_config = self._service_launch_config(id)
-        if safe and not self._service_active(id): return
+        if safe and not self._service_active(id):
+            raise appier.OperationalError(
+                message = "Service is currently not ready for upgrade"
+            )
         contents = self.post(
             url,
             data_j = dict(
