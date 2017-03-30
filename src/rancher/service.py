@@ -85,7 +85,7 @@ class ServiceApi(object):
         url = self.base_url + "services/%s?action=upgrade" % id
         if try_finish: self._service_try_finish(id)
         if launch_config == None: launch_config = self._service_launch_config(id)
-        if safe and not self._serivce_active(id): return
+        if safe and not self._service_active(id): return
         contents = self.post(
             url,
             data_j = dict(
@@ -127,7 +127,7 @@ class ServiceApi(object):
         data = contents["data"]
         return data
 
-    def _serivce_active(self):
+    def _service_active(self, id):
         service = self.get_service(id)
         return service["state"] == "active"
 
