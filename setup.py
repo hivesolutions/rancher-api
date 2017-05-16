@@ -45,7 +45,7 @@ setuptools.setup(
     description = "Rancher API Client",
     license = "Apache License, Version 2.0",
     keywords = "rancher api",
-    url = "http://rancher_api.hive.pt",
+    url = "http://rancher-api.hive.pt",
     zip_safe = False,
     packages = [
         "rancher"
