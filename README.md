@@ -1,4 +1,4 @@
-# [Racher API](http://rancher_api.hive.pt)
+# [Racher API](http://rancher-api.hive.pt)
 
 The Python Rancher API client.
 
