@@ -39,7 +39,7 @@ import appier
 import rancher
 
 def get_api():
-    return rancher.Api(
+    return rancher.API(
         username = appier.conf("RANCHER_USERNAME"),
         password = appier.conf("RANCHER_PASSWORD")
     )

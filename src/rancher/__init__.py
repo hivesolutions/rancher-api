@@ -38,6 +38,6 @@ from . import base
 from . import service
 from . import stack
 
-from .base import Api
-from .service import ServiceApi
-from .stack import StackApi
+from .base import API
+from .service import ServiceAPI
+from .stack import StackAPI

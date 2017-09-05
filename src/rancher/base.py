@@ -46,14 +46,14 @@ from . import service
 
 BASE_URL = "http://localhost:8080/v2/"
 
-class Api(
-    appier.Api,
-    stack.StackApi,
-    service.ServiceApi
+class API(
+    appier.API,
+    stack.StackAPI,
+    service.ServiceAPI
 ):
 
     def __init__(self, *args, **kwargs):
-        appier.Api.__init__(self, *args, **kwargs)
+        appier.API.__init__(self, *args, **kwargs)
         self.base_url = appier.conf("RANCHER_BASE_URL", BASE_URL)
         self.username = appier.conf("RANCHER_USERNAME", None)
         self.password = appier.conf("RANCHER_PASSWORD", None)

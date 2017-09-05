@@ -41,7 +41,7 @@ import time
 
 import appier
 
-class ServiceApi(object):
+class ServiceAPI(object):
 
     def list_services(self, *args, **kwargs):
         url = self.base_url + "services"

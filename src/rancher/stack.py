@@ -37,7 +37,7 @@ __copyright__ = "Copyright (c) 2008-2017 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-class StackApi(object):
+class StackAPI(object):
 
     def list_stacks(self, *args, **kwargs):
         url = self.base_url + "stacks"
