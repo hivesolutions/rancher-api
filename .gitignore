@@ -1,6 +1,10 @@
 *.pyc
 *.csv
 
+session.shelve*
+
+.DS_Store
+
 /dist
 /build
 /src/rancher_api.egg-info
