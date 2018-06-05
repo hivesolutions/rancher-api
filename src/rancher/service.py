@@ -52,8 +52,9 @@ class ServiceAPI(object):
         data = contents["data"]
         return data
 
-    def list_services_name(self, name):
+    def list_services_name(self, name, stack = None):
         url = self.base_url + "services?name=%s" % name
+        if stack: url += "&stackId=%s" % stack
         contents = self.get(url)
         data = contents["data"]
         return data
@@ -63,8 +64,8 @@ class ServiceAPI(object):
         contents = self.get(url)
         return contents
 
-    def get_service_safe(self, id):
-        contents = self.list_services_name(id)
+    def get_service_safe(self, id, stack = None):
+        contents = self.list_services_name(id, stack = stack)
         if contents: return contents[0]
         return self.get_service(id)
 
