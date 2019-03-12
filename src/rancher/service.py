@@ -144,7 +144,7 @@ class ServiceAPI(object):
     def _service_try_finish(self, id, timeout = 10.0, force = False):
         if not self._service_upgraded(id) and not force: return
         try: self.finish_upgrade_service(id)
-        except: pass
+        except Exception: pass
         else: time.sleep(timeout)
 
     def _service_launch_config(self, id):
