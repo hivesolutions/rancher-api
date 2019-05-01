@@ -45,10 +45,7 @@ class ServiceAPI(object):
 
     def list_services(self, *args, **kwargs):
         url = self.base_url + "services"
-        contents = self.get(
-            url,
-            **kwargs
-        )
+        contents = self.get(url, **kwargs)
         data = contents["data"]
         return data
 

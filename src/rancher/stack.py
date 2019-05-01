@@ -41,9 +41,6 @@ class StackAPI(object):
 
     def list_stacks(self, *args, **kwargs):
         url = self.base_url + "stacks"
-        contents = self.get(
-            url,
-            **kwargs
-        )
+        contents = self.get(url, **kwargs)
         data = contents["data"]
         return data
