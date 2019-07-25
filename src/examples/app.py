@@ -93,6 +93,15 @@ class RancherApp(appier.WebApp):
         workload = api.get_workload_safe(project, id)
         return workload
 
+    @appier.route("/clusters/<str:cluster>/projects/<str:project>/workloads/<str:id>/upgrade", "GET")
+    def upgrade_workload(self, cluster, project, id):
+        api = self.get_api()
+        cluster = api.get_cluster_safe(cluster)["id"]
+        project = api.get_project_safe(cluster, project)["id"]
+        id = api.get_workload_safe(project, id)["id"]
+        workload = api.upgrade_workload(project, id)
+        return workload
+
     @appier.route("/stacks", "GET")
     def stacks(self):
         api = self.get_api()

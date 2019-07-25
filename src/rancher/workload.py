@@ -37,6 +37,8 @@ __copyright__ = "Copyright (c) 2008-2019 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
+import datetime
+
 class WorkloadAPI(object):
     """
     The workload API endpoints used by the Rancher 2.x
@@ -55,7 +57,7 @@ class WorkloadAPI(object):
         data = contents["data"]
         return data
 
-    def get_workload(self, cluster, project, id):
+    def get_workload(self, project, id):
         url = self.base_url + "projects/%s/workloads/%s" % (project, id)
         contents = self.get(url)
         return contents
@@ -64,3 +66,15 @@ class WorkloadAPI(object):
         contents = self.list_workloads_name(project, id)
         if contents: return contents[0]
         return self.get_workload(project, id)
+
+    def update_workload(self, project, id, payload = {}):
+        url = self.base_url + "projects/%s/workloads/%s" % (project, id)
+        contents = self.put(url, data_j = payload)
+        return contents
+
+    def upgrade_workload(self, project, id):
+        workload = self.get_workload(project, id)
+        current_date = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%SZ")
+        workload["annotations"]["cattle.io/timestamp"] = current_date
+        self.update_workload(project, id, payload = workload)
+        return workload
