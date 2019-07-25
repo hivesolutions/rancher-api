@@ -2,6 +2,8 @@
 
 The Python Rancher API client.
 
+Currently the client is compatible with both v2-beta and v3 of the Rancher API.
+
 ## Reference
 
 The Rancher API projects takes most of its reference implementation from the [Official Rancher API Documentation](http://docs.rancher.com/rancher/api/).
@@ -10,7 +12,7 @@ The Rancher API projects takes most of its reference implementation from the [Of
 
 | Name | Type | Description |
 | ----- | ----- | ----- |
-| **RANCHER_BASE_URL** | `str` | The base URL to the rancher server of target (eg: `http://rancher.domain.com:8080/v2-beta/`) (defaults to `None`). |
+| **RANCHER_BASE_URL** | `str` | The base URL to the rancher server of target (eg: `http://rancher.domain.com:8080/v3/`) (defaults to `None`). |
 | **RANCHER_USERNAME** | `str` | The username (access key) to be used for API authentication (defaults to `None`). |
 | **RANCHER_PASSWORD** | `str` | The password (secret key) to be used for API authentication (defaults to `None`). |
 
