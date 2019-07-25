@@ -42,6 +42,10 @@ import time
 import appier
 
 class ServiceAPI(object):
+    """
+    The service API endpoints used by the Rancher 1.x
+    infra-structure.
+    """
 
     def list_services(self, *args, **kwargs):
         url = self.base_url + "services"

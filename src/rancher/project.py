@@ -37,14 +37,14 @@ __copyright__ = "Copyright (c) 2008-2019 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-class StackAPI(object):
+class ProjectAPI(object):
     """
-    The stack API endpoints used by the Rancher 1.x
+    The project API endpoints used by the Rancher 2.x
     infra-structure.
     """
 
-    def list_stacks(self, *args, **kwargs):
-        url = self.base_url + "stacks"
+    def list_projects(self, *args, **kwargs):
+        url = self.base_url + "project"
         contents = self.get(url, **kwargs)
         data = contents["data"]
         return data

@@ -37,7 +37,10 @@ __license__ = "Apache License, Version 2.0"
 from . import base
 from . import service
 from . import stack
+from . import workload
 
 from .base import API
+from .project import ProjectAPI
 from .service import ServiceAPI
 from .stack import StackAPI
+from .workload import WorkloadAPI

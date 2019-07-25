@@ -37,14 +37,25 @@ __copyright__ = "Copyright (c) 2008-2019 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-class StackAPI(object):
+class WorkloadAPI(object):
     """
-    The stack API endpoints used by the Rancher 1.x
+    The workload API endpoints used by the Rancher 2.x
     infra-structure.
     """
 
-    def list_stacks(self, *args, **kwargs):
-        url = self.base_url + "stacks"
+    def list_workloads(self, project, *args, **kwargs):
+        url = self.base_url + "project/%s/workload" % project
         contents = self.get(url, **kwargs)
         data = contents["data"]
         return data
+
+    def list_workloads_name(self, project, name):
+        url = self.base_url + "project/%s/workload?name=%s" % (project, name)
+        contents = self.get(url)
+        data = contents["data"]
+        return data
+
+    def get_workload(self, project, id):
+        url = self.base_url + "project/%s/workload/%s" % (project, id)
+        contents = self.get(url)
+        return contents

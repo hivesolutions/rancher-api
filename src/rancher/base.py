@@ -42,14 +42,18 @@ import base64
 import appier
 
 from . import stack
+from . import project
 from . import service
+from . import workload
 
 BASE_URL = "http://localhost:8080/v2/"
 
 class API(
     appier.API,
     stack.StackAPI,
-    service.ServiceAPI
+    project.ProjectAPI,
+    service.ServiceAPI,
+    workload.WorkloadAPI
 ):
 
     def __init__(self, *args, **kwargs):
