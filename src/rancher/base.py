@@ -42,6 +42,7 @@ import base64
 import appier
 
 from . import stack
+from . import cluster
 from . import project
 from . import service
 from . import workload
@@ -51,6 +52,7 @@ BASE_URL = "http://localhost:8080/v2/"
 class API(
     appier.API,
     stack.StackAPI,
+    cluster.ClusterAPI,
     project.ProjectAPI,
     service.ServiceAPI,
     workload.WorkloadAPI

@@ -35,11 +35,13 @@ __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
 from . import base
+from . import cluster
 from . import service
 from . import stack
 from . import workload
 
 from .base import API
+from .cluster import ClusterAPI
 from .project import ProjectAPI
 from .service import ServiceAPI
 from .stack import StackAPI

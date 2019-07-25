@@ -1,4 +1,4 @@
-# [Racher API](http://rancher-api.hive.pt)
+# [Rancher API](http://rancher-api.hive.pt)
 
 The Python Rancher API client.
 
@@ -11,8 +11,8 @@ The Rancher API projects takes most of its reference implementation from the [Of
 | Name | Type | Description |
 | ----- | ----- | ----- |
 | **RANCHER_BASE_URL** | `str` | The base URL to the rancher server of target (eg: `http://rancher.domain.com:8080/v2-beta/`) (defaults to `None`). |
-| **RANCHER_USERNAME** | `str` | The username to be used for API authentication (defaults to `None`). |
-| **RANCHER_PASSWORD** | `str` | The password to be used for API authentication (defaults to `None`). |
+| **RANCHER_USERNAME** | `str` | The username (access key) to be used for API authentication (defaults to `None`). |
+| **RANCHER_PASSWORD** | `str` | The password (secret key) to be used for API authentication (defaults to `None`). |
 
 ## License
 

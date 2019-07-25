@@ -44,18 +44,23 @@ class WorkloadAPI(object):
     """
 
     def list_workloads(self, project, *args, **kwargs):
-        url = self.base_url + "project/%s/workload" % project
+        url = self.base_url + "projects/%s/workloads" % project
         contents = self.get(url, **kwargs)
         data = contents["data"]
         return data
 
     def list_workloads_name(self, project, name):
-        url = self.base_url + "project/%s/workload?name=%s" % (project, name)
+        url = self.base_url + "projects/%s/workloads?name=%s" % (project, name)
         contents = self.get(url)
         data = contents["data"]
         return data
 
-    def get_workload(self, project, id):
-        url = self.base_url + "project/%s/workload/%s" % (project, id)
+    def get_workload(self, cluster, project, id):
+        url = self.base_url + "projects/%s/workloads/%s" % (project, id)
         contents = self.get(url)
         return contents
+
+    def get_workload_safe(self, project, id):
+        contents = self.list_workloads_name(project, id)
+        if contents: return contents[0]
+        return self.get_workload(project, id)

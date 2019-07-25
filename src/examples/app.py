@@ -51,6 +51,48 @@ class RancherApp(appier.WebApp):
     def index(self):
         return self.stacks()
 
+    @appier.route("/clusters", "GET")
+    def clusters(self):
+        api = self.get_api()
+        clusters = api.list_clusters()
+        return clusters
+
+    @appier.route("/clusters/<str:id>", "GET")
+    def cluster_safe(self, id):
+        api = self.get_api()
+        cluster = api.get_cluster_safe(id)
+        return cluster
+
+    @appier.route("/clusters/<str:cluster>/projects", "GET")
+    def projects(self, cluster):
+        api = self.get_api()
+        cluster = api.get_cluster_safe(cluster)["id"]
+        projects = api.list_projects(cluster)
+        return projects
+
+    @appier.route("/clusters/<str:cluster>/projects/<str:id>", "GET")
+    def project_safe(self, cluster, id):
+        api = self.get_api()
+        cluster = api.get_cluster_safe(cluster)["id"]
+        project = api.get_project_safe(cluster, id)
+        return project
+
+    @appier.route("/clusters/<str:cluster>/projects/<str:project>/workloads", "GET")
+    def workloads(self, cluster, project):
+        api = self.get_api()
+        cluster = api.get_cluster_safe(cluster)["id"]
+        project = api.get_project_safe(cluster, project)["id"]
+        workloads = api.list_workloads(project)
+        return workloads
+
+    @appier.route("/clusters/<str:cluster>/projects/<str:project>/workloads/<str:id>", "GET")
+    def workload_safe(self, cluster, project, id):
+        api = self.get_api()
+        cluster = api.get_cluster_safe(cluster)["id"]
+        project = api.get_project_safe(cluster, project)["id"]
+        workload = api.get_workload_safe(project, id)
+        return workload
+
     @appier.route("/stacks", "GET")
     def stacks(self):
         api = self.get_api()

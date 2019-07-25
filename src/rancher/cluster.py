@@ -37,30 +37,30 @@ __copyright__ = "Copyright (c) 2008-2019 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-class ProjectAPI(object):
+class ClusterAPI(object):
     """
-    The project API endpoints used by the Rancher 2.x
+    The cluster API endpoints used by the Rancher 2.x
     infra-structure.
     """
 
-    def list_projects(self, cluster, *args, **kwargs):
-        url = self.base_url + "clusters/%s/projects" % cluster
+    def list_clusters(self, *args, **kwargs):
+        url = self.base_url + "clusters"
         contents = self.get(url, **kwargs)
         data = contents["data"]
         return data
 
-    def list_projects_name(self, cluster, name):
-        url = self.base_url + "clusters/%s/projects?name=%s" % (cluster, name)
+    def list_clusters_name(self, name):
+        url = self.base_url + "clusters?name=%s" % name
         contents = self.get(url)
         data = contents["data"]
         return data
 
-    def get_project(self, cluster, id):
-        url = self.base_url + "clusters/%s/projects/%s" % (cluster, id)
+    def get_cluster(self, id):
+        url = self.base_url + "clusters/%s" % id
         contents = self.get(url)
         return contents
 
-    def get_project_safe(self, cluster, id):
-        contents = self.list_projects_name(cluster, id)
+    def get_cluster_safe(self, id):
+        contents = self.list_clusters_name(id)
         if contents: return contents[0]
-        return self.get_project(cluster, id)
+        return self.get_cluster(id)
