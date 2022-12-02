@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>rancher_api</name>
+	<name>rancher-api</name>
 	<comment></comment>
 	<projects>
 		<project>appier</project>

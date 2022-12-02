@@ -38,7 +38,7 @@ import os
 import setuptools
 
 setuptools.setup(
-    name = "rancher_api",
+    name = "rancher-api",
     version = "0.3.0",
     author = "Hive Solutions Lda.",
     author_email = "development@hive.pt",
@@ -72,5 +72,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7"
-    ]
+    ],
+    long_description = open(os.path.join(os.path.dirname(__file__), "README.md"), "r").read(),
+    long_description_content_type = "text/markdown"
 )
