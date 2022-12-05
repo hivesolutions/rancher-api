@@ -7,4 +7,4 @@ session.shelve*
 
 /dist
 /build
-/src/rancher-api.egg-info
+/src/rancher_api.egg-info
